@@ -1,0 +1,16 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.major{
+    width: 800px;
+    height: 400px;
+    margin-left:30px;
+}
+.right{
+    width: 200px; 
+    height: 400px; 
+    margin-left:30px;
+    position: relative;
+    left: 850px;
+    top: -400px;
+}
