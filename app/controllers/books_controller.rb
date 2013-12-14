@@ -17,7 +17,7 @@ class BooksController < ApplicationController
     if start_date.nil? || end_date.nil?
       render :new
     else
-      # @total_statuses = fetch_statuses(start_date, end_date)
+       @total_statuses = fetch_statuses(start_date, end_date)
     end
     
   end
@@ -25,10 +25,15 @@ class BooksController < ApplicationController
   def show
   end
 
-  def send_mail
+  def send_email
     @addr = params[:email_addr]
-    # TODO validate the email addr
-    CommentMailer.sendmail("hitwavebook@163.com", @addr.to_s, "hitwave", "your_weibo_book", @message).deliver
+    # XXX validate is not perfect !
+    flash_msg(:error, "Invalied addr : #{@addr}") if invalid_email_addr?(@addr.to_s)
+    if invalid_email_addr?(@addr.to_s) 
+        render :show 
+    else 
+        CommentMailer.sendmail(@addr.to_s).deliver
+    end
   end
   
   private
