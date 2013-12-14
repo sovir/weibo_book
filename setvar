@@ -1,0 +1,1 @@
+KEY=1295369281 SECRET=3ff95375d2f5092035b591f9b1aafc78 REDIR_URI=http://127.0.0.1/callback ruby example.rb
