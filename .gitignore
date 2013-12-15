@@ -14,10 +14,10 @@
 
 /config/database.yml
 /config/database.yml~
+/statuses/*
+/wbooks/*
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/statuses/*
-/wbooks/*
 
