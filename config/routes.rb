@@ -11,6 +11,8 @@ WeiboBook::Application.routes.draw do
   match '/signin', to: 'sessions#new', via: :get
   match '/callback', to: 'sessions#create', via: :get
   match 'signout', to: 'sessions#destroy', via: :delete
+  post "books/select"
+  get "books/show"
   post "books/send_email"
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -31,6 +31,8 @@ gem 'jbuilder', '1.0.2'
 gem 'multi_json', '~>1.7.2'
 gem 'json', '~>1.7.3'
 gem 'weibo_2'
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
