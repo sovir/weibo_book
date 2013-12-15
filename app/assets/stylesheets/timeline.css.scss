@@ -1,0 +1,15 @@
+.page-break { display:block; clear:both; page-break-after:always; }
+.title_page { 
+    .date {
+	font-size: 10mm;
+	margin-top: 60mm;
+	.year { }
+	.month { color: red; font-size: 15mm }
+    }
+    .book_title {
+	position: relative;
+	font-weight: bold;
+	font-size: 10mm;
+    }
+    .poetry { color: gray; font-size: 5mm; font-style: italic; }
+}
