@@ -40,15 +40,20 @@ def create
         @data= Mash.new(JSON.load(f))
     end
     @tpl=params[:tpl]
+    if @tpl.nil?
+	@tpl="waterfall";
+    end
     fetched_statuses = @data.statuses
     @statuses = []
     fetched_statuses.each do |status|
         @statuses << status if params[status.id.to_s] == '1'
     end
+    @statuses = @statuses.reverse
     pdf = WickedPdf.new
     pdf = render_to_string(:pdf => "book.pdf",
                            :template => "books/#{@tpl}.pdf.erb",
-                           :page_size => "A5")
+                           :page_size => "A5",
+			   :disposition => "attachment")
     File.open("wbooks/#{session[:uid]}.pdf", "wb") do |f|
         f << pdf
     end

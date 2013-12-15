@@ -23,6 +23,7 @@
   <%= label_tag(:waterfall, "waterfall") %>
   <%= radio_button_tag(:tpl, "newspaper") %>
   <%= label_tag(:newspaper, "newspaper") %>
+  <%= submit_tag "Create Book"%>
 <% end %>
 
 <script type='text/javascript'>

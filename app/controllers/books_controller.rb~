@@ -48,10 +48,14 @@ def create
     fetched_statuses.each do |status|
         @statuses << status if params[status.id.to_s] == '1'
     end
+
+
+    @statuses = @statuses.reverse
     pdf = WickedPdf.new
     pdf = render_to_string(:pdf => "book.pdf",
                            :template => "books/#{@tpl}.pdf.erb",
-                           :page_size => "A5")
+                           :page_size => "A5",
+			   :disposition => "attachment")
     File.open("wbooks/#{session[:uid]}.pdf", "wb") do |f|
         f << pdf
     end

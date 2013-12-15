@@ -1,4 +1,4 @@
-<%= form_tag({action: :select},method:"get") do %>
+<%= form_tag({action: :select}) do %>
   <% start_date = session[:created_at] %>
   <% end_date = Date.today %>
   start date:<%= select_date start_date, use_month_numbers: true,

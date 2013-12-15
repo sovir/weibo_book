@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <%= wicked_pdf_stylesheet_link_tag "timeline" %>
+  <%= wicked_pdf_stylesheet_link_tag "waterfall" %>
 </head>
 <body>
   <%# title_page %>
@@ -8,12 +9,12 @@
     <div class="date">
       <% start_date = Date.parse(@data.start_date) %>
       From
-      <!--<div class="year">
+      <div class="year">
 	<%= start_date.year %>
       </div>
       <div class="month">
 	<%= start_date.strftime("%m") %>.
-      </div>-->
+      </div>
     </div>
     <div class="book_title">
       <%= "#{session[:screen_name]}的微博书" %>
@@ -23,9 +24,38 @@
       but I am glad I have had my flight.
     </div>
   </div>
-
   <div class="page-break"></div>
 
+ 
+ <div class="contant">
+
+ <% @statuses.each_slice(2) do |slice| %>
+ <table>
+	<% slice.each do |status| %>
+		<%=if DateTime.parse(status.created_at).strftime("%H") == "11" 
+			1212
+			end
+		%>
+		<td><div class="status">
+			<%# pictures %>
+			<% unless status.pic_urls.nil? %>
+			<% status.pic_urls.each do |pic_url| %>
+			  <%= image_tag pic_url.thumbnail_pic, alt: "pic" %>
+			<% end %>
+			<% end %>
+			<p><%= status.text %></p>
+			<%# timestamp %>
+			<div class="timestamp">
+			<span >
+			 @<%= DateTime.parse(status.created_at).strftime(
+			  "%Y年%m月%d日 %H:%M") %>
+			</span>
+			</div>
+		</div></td>
+	<% end %>
+ </table>
+ <% end %>
+</div>
   <%# inner_page %>
   
 </body>
