@@ -40,6 +40,9 @@ def create
         @data= Mash.new(JSON.load(f))
     end
     @tpl=params[:tpl]
+    if @tpl.nil?
+	@tpl="waterfall";
+    end
     fetched_statuses = @data.statuses
     @statuses = []
     fetched_statuses.each do |status|

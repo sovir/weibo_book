@@ -1,4 +1,11 @@
 <%= form_tag({action: :select},method:"get") do %>
+  select template:<br/>
+  <%= radio_button_tag(:tpl, "timeline") %>
+  <%= label_tag(:timeline, "timeline") %>
+  <%= radio_button_tag(:tpl, "waterfall") %>
+  <%= label_tag(:waterfall, "waterfall") %>
+  <%= radio_button_tag(:tpl, "newspaper") %>
+  <%= label_tag(:newspaper, "newspaper") %>
   <% start_date = session[:created_at] %>
   <% end_date = Date.today %>
   start date:<%= select_date start_date, use_month_numbers: true,
