@@ -1,0 +1,26 @@
+<%= form_tag({ action: :create }) do %>
+  <div class="statuses">
+    <% @statuses.each do |status| %>
+      <li><div class="contant"><%= check_box_tag(status.id) %>
+	<%= status.text %></div>
+	<%# pictures %>
+	<% status.pic_urls.each do |pic_url| %>
+	  <%= image_tag pic_url.thumbnail_pic, alt: "pic" %>
+	<% end %><br />
+	<%# timestamp %>
+	<span class="timestamp">
+	  <%= DateTime.parse(status.created_at).strftime(
+	  "%Y年%m月%d日 %H:%M") %>
+	</span>
+      </li>
+    <% end %>
+    <button type="button" id="check_all">全选</button>
+  </div>
+  <%= submit_tag "Create Book"%>
+<% end %>
+
+<script type='text/javascript'>
+ $('#check_all').on("click", function(){
+   $('input[type="checkbox"]').click();
+ });
+</script>
