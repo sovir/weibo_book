@@ -1,0 +1,24 @@
+<%# chapter_title_page %>
+<div class="chapter-title-page">
+  <%= chapter.first_day %><br />
+  <%= chapter.month %><br />
+  <%= chapter.season %><br />
+  <%= chapter.poetry %><br />
+</div>
+
+<div class="page-break"></div>
+
+<div class="chapter-content">
+  <% chapter.statuses.each do |status| %>
+    <div class="item">
+      <%= Date.parse(status.created_at) %><br />
+      <%= status.text %><br />
+      <%# pictures %>
+      <% status.pic_urls.each do |pic_url| %>
+	<%= image_tag pic_url.thumbnail_pic, alt: "pic" %>
+      <% end %><br />
+    </div>
+  <% end %>
+</div>
+
+<div class="page-break"></div>

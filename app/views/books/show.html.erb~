@@ -1,0 +1,12 @@
+<h1>微博书PDF预览</h1>
+<center>
+  <%= image_tag 'rails1.png' , :size => '150x150' %>
+</center>
+
+<%= form_tag :action => 'send_email' do %>
+  <p>请填写您的电子邮箱地址:
+    <%= text_field_tag 'email_addr', @addr %></p>
+  <center>
+    <%= submit_tag '将微博书发送至我的电子邮箱' %>
+  </center>
+<% end %>
