@@ -1,15 +1,51 @@
 .page-break { display:block; clear:both; page-break-after:always; }
 .title_page { 
     .date {
-	font-size: 10mm;
-	margin-top: 60mm;
-	.year { }
-	.month { color: red; font-size: 15mm }
+        font-size: 10mm;
+        margin-top: 60mm;
+        .year { }
+        .month { color: green; font-size: 15mm }
     }
     .book_title {
-	position: relative;
-	font-weight: bold;
-	font-size: 10mm;
+        position: relative;
+        font-family: bold;
     }
     .poetry { color: gray; font-size: 5mm; font-style: italic; }
+}
+
+.contant{
+
+    .one_status{
+        border:1px;
+        clear:both;
+        overflow:hidden;
+    }
+
+    .timestamp_left{
+        text-align:left;
+        background-color:#eeeeee;
+        font-size:5mm;
+        color:#ff6100;
+    }
+    .timestamp_right{
+        text-align:right;
+        background-color:#eeeeee;
+        font-size:5mm;
+        color:#ff6100;
+    }
+
+    .status_text{
+        font-family: KaiTi;
+        margin-top:1mm;
+        border-top:0.5mm dotted #dddddd;
+        background-color:#fcfcfc;
+        filter:alpha(opacity=50); 
+    }
+
+    table,td{
+        width: 100%;
+        page-break-inside: avoid;
+    }
+
+
 }

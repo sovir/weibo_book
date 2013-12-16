@@ -98,6 +98,7 @@ class BooksController < ApplicationController
         page = 0
         count = 20
         fetch_end = false
+        #select_end = false;
         begin
             page = page + 1
             data = client.statuses.user_timeline("uid" => session[:uid],

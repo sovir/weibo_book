@@ -1,6 +1,7 @@
+<% # encoding=utf-8 %>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<%= wicked_pdf_stylesheet_link_tag "timeline" %>
+<%= wicked_pdf_stylesheet_link_tag "newspaper" %>
 </head>
 <body>
 <%# title_page %>
@@ -26,35 +27,43 @@ but I am glad I have had my flight.
 
 <%# inner_page %>
 <div class="page-break"></div>
-<% place_left= 1 %>
+
+<div class="contant">
+<% timestamp_pos= "right" %>
 <% @statuses.each do |status| %>
+    <table>
+    <td>
     <% if status.pic_urls != [] then %>
-        <%# status.pic_urls %>
-        <div style="border:1px ;clear:both;overflow:hidden;">
+        <br />
+        <div class="one_status">
         <%# pictures %>
         <% status.pic_urls.each do |pic_url| %>
-            <% if place_left == 1 %>
-                <p style="text-align:left ">
+            <% #XXX 用变量控制左右而不是hardcode%>
+            <% if timestamp_pos == "left" %> 
+                <div class="timestamp_left">
                 <%= DateTime.parse(status.created_at).strftime(
                     "%Y.%m.%d %H:%M") %>
-                </p>
-                <%= image_tag pic_url.thumbnail_pic, alt: "pic",style:"float:left;" %>
-                <% place_left = 0 %>
-            <% else %>        
-                <p style="text-align:right">
+                </div>
+                <%= image_tag pic_url.thumbnail_pic, alt: "pic",style:"float:#{timestamp_pos};" %>
+                <% timestamp_pos = "right" %>
+            <% else %>
+                <div class="timestamp_right">
                 <%= DateTime.parse(status.created_at).strftime(
                     "%Y.%m.%d %H:%M") %>
-                </p>
-                <%= image_tag pic_url.thumbnail_pic, alt: "pic",style:"float:right;" %>
-                <% place_left = 1 %>
+                </div>
+                <%= image_tag pic_url.thumbnail_pic, alt: "pic",style:"float:#{timestamp_pos};" %>
+                <% timestamp_pos = "left" %>
             <% end %>
         <% end %>
-        <div style="font-family:FangSong">
+        <div class="status_text">
         <p style="text-indent:2em">
         <%= status.text %>
         </p></div>
-        <br />
+        </div>
     <% end %>
+    </td>
+    </table>
 <% end %>
+</div>
 </body>
 

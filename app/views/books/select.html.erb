@@ -6,7 +6,6 @@
 	<%# pictures %>
 	<% status.pic_urls.each do |pic_url| %>
 	  <%= image_tag pic_url.thumbnail_pic, alt: "pic" %>
-      <%= "***"+"***" %>
 	<% end %><br />
 	<%# unless status.retweeted_status.nil? %>
 	  <% #status.retweeted_status %>
