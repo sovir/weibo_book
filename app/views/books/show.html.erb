@@ -9,4 +9,10 @@
   <center>
     <%= submit_tag '将微博书发送至我的电子邮箱' %>
   </center>
-<% end %>
+  <%end%>
+
+<%= form_tag :action => 'down_pdf' do %>
+  <center>
+    <%= submit_tag '直接下载微博书' %>
+  </center>
+  <%end%>

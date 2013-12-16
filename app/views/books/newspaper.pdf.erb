@@ -33,7 +33,6 @@ but I am glad I have had my flight.
         <div style="border:1px ;clear:both;overflow:hidden;">
         <%# pictures %>
         <% status.pic_urls.each do |pic_url| %>
-            <font background-color="red">
             <% if place_left == 1 %>
                 <p style="text-align:left ">
                 <%= DateTime.parse(status.created_at).strftime(
@@ -49,9 +48,8 @@ but I am glad I have had my flight.
                 <%= image_tag pic_url.thumbnail_pic, alt: "pic",style:"float:right;" %>
                 <% place_left = 1 %>
             <% end %>
-            </font>
         <% end %>
-        <div style="font-family:FangSong ">
+        <div style="font-family:FangSong">
         <p style="text-indent:2em">
         <%= status.text %>
         </p></div>

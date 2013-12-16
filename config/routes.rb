@@ -14,6 +14,7 @@ WeiboBook::Application.routes.draw do
   post "books/select"
   get "books/show"
   post "books/send_email"
+  post "books/down_pdf"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
