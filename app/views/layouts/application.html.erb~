@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE encoding utf-8>
 <html>
   <head>
     <title>WeiboBook</title>
@@ -24,6 +23,6 @@
 
       <%= render 'layouts/footer' %>
     </div>
-    <div class="container"><%= debug(params) if Rails.env.development? %></div>
+    <div class="container" style="margin-top:40px;"><%= debug(params) if Rails.env.development? %></div>
   </body>
 </html>

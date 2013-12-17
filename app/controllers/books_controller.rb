@@ -45,9 +45,10 @@ class BooksController < ApplicationController
         end
         fetched_statuses = @data.statuses
         @statuses = []
-        fetched_statuses.reverse_each do |status|
+        fetched_statuses.each do |status|
             @statuses << status if params[status.id.to_s] == '1'
         end
+        @statuses = @statuses.reverse
         pdf = WickedPdf.new
         pdf = render_to_string(:pdf => "book.pdf",
                                :template => "books/#{@tpl}.pdf.erb",

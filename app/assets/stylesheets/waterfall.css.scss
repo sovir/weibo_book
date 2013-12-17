@@ -15,10 +15,8 @@
 }
 .contant{
 	//background-color:#f3f3f3;
-	.test{.status{-moz-column-count:3; /* Firefox */
-	-webkit-column-count:3; /* Safari and Chrome */
-	column-count:3;
 	
+	.status{
 		width:60mm;
 		padding-top:1mm;
 		margin-left:5mm;
@@ -64,6 +62,6 @@
 		vertical-align: top;
 		page-break-inside: avoid ;
 	}
-	}
+	
 }
 

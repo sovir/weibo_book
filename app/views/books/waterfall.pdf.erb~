@@ -26,17 +26,17 @@
   </div>
   <div class="page-break"></div>
 
- <td><div style="width:100%;height:210mm;"><%= render "timeline.pdf.erb" %></div></td><div class="page-break"></div>
+ <td><div style="width:100%;height:210mm;"><%= render "_timeline.html.erb" %></div></td><div class="page-break"></div>
  <div class="contant">
- <table class="test"><td>
- <% @statuses.each_slice(2) do |slice| %>
 
+ <% @statuses.each_slice(2) do |slice| %>
+ <table>
 	<% slice.each do |status| %>
 		<%=if DateTime.parse(status.created_at).strftime("%H") == "11" 
 			
 			end
 		%>
-		<div class="status">
+		<td><div class="status">
 			<p class="text"><%= status.text %></p>
 			<%# pictures %>
 			<% status.pic_urls.each do |pic_url| %>
@@ -62,10 +62,10 @@
 			 @<%= DateTime.parse(status.created_at).strftime(
 			  "%Y年%m月%d日 %H:%M") %>
 			</div>
-		</div>
+		</div></td>
 	<% end %>
-
- <% end %> </td></table>
+ </table>
+ <% end %>
 </div>
   <%# inner_page %>
   

@@ -14,3 +14,26 @@
     left: 850px;
     top: -400px;
 }
+.preview{
+	height:600px;
+	width:1000px;
+	background-color:#efefef;
+	opacity:1.0;
+	filter:alpha(opacity=100);
+	.waterfall{
+		-webkit-column-width:240px;
+		-moz-column-width:160px;
+		-o-colum-width:160px;
+		-webkit-column-gap:1px;
+		-moz-column-gap:1px;
+		-o-column-gap:1px;	
+		//height:600px;
+		.st{
+			//width:300px;
+		}
+		//height:400px;
+	}
+
+}
+
+
