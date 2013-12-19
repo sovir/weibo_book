@@ -1,5 +1,5 @@
 <!--<iframe src="_waterfall.html.erb"></iframe>-->
-<!--<body>
+<body>
 <div class="preview">
 	<%#= render partial:"waterfall.html.erb",size:"600x600" %>
 </div>
@@ -39,4 +39,4 @@
 </div>
 </body>
 
-</div>-->
+</div>

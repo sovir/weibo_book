@@ -1,37 +1,15 @@
-<!DOCTYPE html>
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <%= wicked_pdf_stylesheet_link_tag "waterfall" %>
-</head>
-<body>
-  <%# title_page %>
-  <div class="title_page">
-    <div class="date">
-      <% start_date = Date.parse(@data.start_date) %>
-      From
-      <div class="year">
-	<%= start_date.year %>
-      </div>
-      <div class="month">
-	<%= start_date.strftime("%m") %>.
-      </div>
-    </div>
-    <div class="book_title">
-      <%= "#{session[:screen_name]}的微博书" %>
-    </div>
-    <div class="poetry">
-      I leave no trace of wings in the air,<br />
-      but I am glad I have had my flight.
-    </div>
-  </div>
+<!--<html><body>-->
+<div class="page-break"></div>
+<%# chapter_title_page %>
+<div class="chapter-title-page">
+  <%= chapter.first_day %><br />
+  <%= chapter.month %><br />
+  <%= chapter.season %><br />
+  <%= chapter.poetry %><br />
+</div>
 
-
-<% until @statuses.empty? do %>
-   <%= render "wf", chapter: next_chapter(@statuses) %>
- <% end %><!--
- <div class="contant">
-
- <% @statuses.each_slice(2) do |slice| %>
+<div class="page-break"></div>
+ <% chapter.statuses.each_slice(2) do |slice| %>
  <table>
 	<% slice.each do |status| %>
 		<%=if DateTime.parse(status.created_at).strftime("%H") == "11" 
@@ -53,7 +31,7 @@
 						<p class="ret_user"><%= status.retweeted_status.user %></p>
 						<p class="re_text"><%= status.retweeted_status.text %></p>
 						<%  status.retweeted_status.pic_urls.each do |pic_url| %>
-		  				<%= image_tag pic_url.thumbnail_pic, alt: "pic" ,style:"max-width:58mm;align:center;"%>
+		  				<%= image_tag pic_url.thumbnail_pic, alt: "pic" ,style:"max-width:58mm;align:left;float:left"%>
 						<% end %>
 					</div>
 				</td></table>
@@ -68,7 +46,5 @@
 	<% end %>
  </table>
  <% end %>
-</div>
-  <%# inner_page %>-->
-  
-</body>
+
+

@@ -24,9 +24,12 @@
       but I am glad I have had my flight.
     </div>
   </div>
-  <div class="page-break"></div>
+<div class="contant">
 
- <td><div style="width:100%;height:210mm;"><%= render "timeline.pdf.erb" %></div></td><div class="page-break"></div>
+<% until @statuses.empty? do %>
+   <%= render "wf", chapter: next_chapter(@statuses) %>
+ <% end %>
+</div><!--
  <div class="contant">
 
  <% @statuses.each_slice(2) do |slice| %>
@@ -67,6 +70,6 @@
  </table>
  <% end %>
 </div>
-  <%# inner_page %>
+  <%# inner_page %>-->
   
 </body>

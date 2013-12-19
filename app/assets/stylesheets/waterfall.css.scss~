@@ -47,7 +47,7 @@
 	
 		.retweeted_status{
 			width:60mm;
-			p.ret_user{background-color:#eeeeee;}
+			//p.ret_user{background-color:#eeeeee;}
 			background-color:#eeeeee;
 			.S_line1_c{margin-left:3mm;margin-top:-3mm;color:#eeeeee;position:absolute;}
 			.ret_status{width:60mm;}

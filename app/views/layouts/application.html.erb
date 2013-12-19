@@ -20,9 +20,9 @@
       <% end %>
 
       <%= yield %>
-
-      <%= render 'layouts/footer' %>
+	<%= render 'layouts/footer' %>
     </div>
-    <div class="container" style="margin-top:40px;position:absolute;"><%= debug(params) if Rails.env.development? %></div>
+    <div class="container" >
+<%= debug(params) if Rails.env.development? %></div>
   </body>
 </html>
