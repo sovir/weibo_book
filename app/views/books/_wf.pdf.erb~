@@ -12,10 +12,6 @@
  <% chapter.statuses.each_slice(2) do |slice| %>
  <table>
 	<% slice.each do |status| %>
-		<%=if DateTime.parse(status.created_at).strftime("%H") == "11" 
-			
-			end
-		%>
 		<td><div class="status">
 			<p class="text"><%= status.text %></p>
 			<%# pictures %>
