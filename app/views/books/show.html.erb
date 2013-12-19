@@ -1,25 +1,23 @@
 <h1>微博书PDF预览</h1>
-<center>
-  <%= image_tag 'rails1.png' , :size => '150x150' %>
-</center>
+<object data=<%= "/wbooks/#{session[:uid]}.pdf#toolbar=1&statusbar=1" %>
+	width="100%" height="800"
+	type="application/pdf"></object>
+<div class="show_tag">
+    <div class='tag_addr'>
+    <%= form_tag( :action => 'send_email') do %>
+      <p>请填写您的电子邮箱地址:
+        <%= text_field_tag 'email_addr', @addr %></p>
+        <%= submit_tag '发送到邮箱' %>
+        <%end%>
+        </div> <div class='tag_down'>
 
-<%= form_tag :action => 'send_email' do %>
-  <p>请填写您的电子邮箱地址:
-    <%= text_field_tag 'email_addr', @addr %></p>
-  <center>
-    <%= submit_tag '发送到邮箱' %>
-  </center>
-  <%end%>
+      <%= form_tag(:action => 'down_pdf') do %>
+          <%= submit_tag '一键下载' %>
+       <%end%>
+       </div> <div class='tag_share'>
 
-<%= form_tag :action => 'down_pdf' do %>
-  <center>
-    <%= submit_tag '一键下载' %>
-  </center>
-  <%end%>
-
-<%= form_tag :action => 'share_book' do %>
-  <center>
-    <%= submit_tag '分享至新浪微博' %>
-  </center>
-  <%end%>
-
+      <%= form_tag(:action => 'share_book') do %>
+         <%= submit_tag '分享至新浪微博' %>
+      <%end%>
+      </div>
+  </div>

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 class BooksController < ApplicationController
     require 'json'
     include Hashie
@@ -45,10 +45,9 @@ class BooksController < ApplicationController
         end
         fetched_statuses = @data.statuses
         @statuses = []
-        fetched_statuses.each do |status|
+        fetched_statuses.reverse_each do |status|
             @statuses << status if params[status.id.to_s] == '1'
         end
-        @statuses = @statuses.reverse
         pdf = WickedPdf.new
         pdf = render_to_string(:pdf => "book.pdf",
                                :template => "books/#{@tpl}.pdf.erb",
@@ -58,19 +57,6 @@ class BooksController < ApplicationController
             f << pdf
         end
         redirect_to action: :show
-    end
-    def show
-    end
-
-    def send_email
-        @addr = params[:email_addr]
-        # XXX validate is not perfect !
-        flash_msg(:error, "Invalied addr : #{@addr}") if invalid_email_addr?(@addr.to_s)
-        if invalid_email_addr?(@addr.to_s) 
-            render :show 
-        else 
-            CommentMailer.sendmail(@addr.to_s).deliver
-        end
     end
 
     def down_pdf
@@ -95,6 +81,7 @@ class BooksController < ApplicationController
         ilist[first_page_no].write("wbooks/#{session[:uid]}.png")
 
         client.statuses.upload("#开源免费的微博书#我用这个网站制作了一本微博书哦，这是内容的第一页",File.open("wbooks/#{session[:uid]}.png"))
+        flash_msg(:error, "已经分享到您的新浪微博啦～快去看看吧～ o(∩∩)o...哈哈")
         render :show
     end
 
@@ -111,6 +98,17 @@ class BooksController < ApplicationController
     end
 
     def show
+    end
+
+    def send_email
+        @addr = params[:email_addr]
+        # XXX validate is not perfect !
+        flash_msg(:error, "Invalied addr : #{@addr}") if invalid_email_addr?(@addr.to_s)
+        if invalid_email_addr?(@addr.to_s) 
+            render :show 
+        else 
+            CommentMailer.sendmail(@addr.to_s, "wbooks/#{session[:uid]}.pdf").deliver
+        end
     end
 
     private
@@ -130,7 +128,7 @@ class BooksController < ApplicationController
         page = 0
         count = 20
         fetch_end = false
-        select_end = false;
+        select_end = false
         begin
             page = page + 1
             data = client.statuses.user_timeline("uid" => session[:uid],

@@ -1,0 +1,46 @@
+<!--<html><body>-->
+<div class="page-break"></div>
+<%# chapter_title_page %>
+<div class="chapter-title-page">
+  <%= chapter.first_day %><br />
+  <%= chapter.month %><br />
+  <%= chapter.season %><br />
+  <%= chapter.poetry %><br />
+</div>
+
+<div class="page-break"></div>
+ <% chapter.statuses.each_slice(2) do |slice| %>
+ <table>
+	<% slice.each do |status| %>
+		<td><div class="status">
+			<p class="text"><%= status.text %></p>
+			<%# pictures %>
+			<% status.pic_urls.each do |pic_url| %>
+			  <%= image_tag pic_url.thumbnail_pic, alt: "pic" ,style:"max-width:60mm;"%>
+			<% end %>
+			<%# retweeted_status %>
+			<% unless status.retweeted_status.nil? %>
+			<div class="retweeted_status">
+				<em class="S_line1_c">◆</em>
+				<table><td>
+					<div class="ret_status">
+						<p class="ret_user"><%= status.retweeted_status.user %></p>
+						<p class="re_text"><%= status.retweeted_status.text %></p>
+						<%  status.retweeted_status.pic_urls.each do |pic_url| %>
+		  				<%= image_tag pic_url.thumbnail_pic, alt: "pic" ,style:"max-width:58mm;align:left;float:left"%>
+						<% end %>
+					</div>
+				</td></table>
+			</div>
+			<% end %>
+			<%# timestamp %>
+			<div class="timestamp">
+			 @<%= DateTime.parse(status.created_at).strftime(
+			  "%Y年%m月%d日 %H:%M") %>
+			</div>
+		</div></td>
+	<% end %>
+ </table>
+ <% end %>
+
+

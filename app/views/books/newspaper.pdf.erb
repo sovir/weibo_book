@@ -25,44 +25,6 @@ but I am glad I have had my flight.
 </div>
 </div>
 
-<%# inner_page %>
-<div class="page-break"></div>
-
-<div class="contant">
-<% timestamp_pos= "left" %>
-<% @statuses.each do |status| %>
-    <table>
-    <td>
-    <% if status.pic_urls != [] then %>
-        <br /> <br /> <br />
-        <div class="one_status">
-        <%# pictures %>
-        <% status.pic_urls.each do |pic_url| %>
-            <% #XXX 用变量控制左右而不是hardcode%>
-            <% if timestamp_pos == "left" %> 
-                <div class="timestamp_left">
-                <%= DateTime.parse(status.created_at).strftime(
-                    "%Y.%m.%d %H:%M") %>
-                </div>
-                <%= image_tag pic_url.thumbnail_pic, alt: "pic",style:"float:#{timestamp_pos};" %>
-                <% timestamp_pos = "right" %>
-            <% else %>
-                <div class="timestamp_right">
-                <%= DateTime.parse(status.created_at).strftime(
-                    "%Y.%m.%d %H:%M") %>
-                </div>
-                <%= image_tag pic_url.thumbnail_pic, alt: "pic",style:"float:#{timestamp_pos};" %>
-                <% timestamp_pos = "left" %>
-            <% end %>
-        <% end %>
-            <div class="status_text">
-            <p><%= status.text %></p>
-            </div>
-        </div>
-    <% end %>
-    </td>
-    </table>
+<% until @statuses.empty? do %>
+    <%= render "news", chapter: next_chapter(@statuses) %>
 <% end %>
-</div>
-</body>
-

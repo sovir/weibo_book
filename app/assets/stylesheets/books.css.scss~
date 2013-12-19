@@ -14,27 +14,7 @@
 	border:1px solid gray;
 	width:300px;
 	height:200px;
-	float:left;
+	//float:left;
 	background-color:red;
 	}
 }
-.show_tag
-{   height:200px;
-    background-color:none;
-     position:relative;
-    .tag_addr{width:100%;}
-    .tag_down{
-        position:relative;
-        margin-top:-75px;
-       // float:left;
-        margin-left:170px;
-    }
-    .tag_share{
-        position:relative;
-        margin-top:-75px;
-       // float:left;
-        margin-left:320px;
-    }
-}
-
-

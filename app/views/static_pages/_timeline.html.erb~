@@ -1,9 +1,3 @@
-<!--<iframe src="_waterfall.html.erb"></iframe>-->
-<!--<body>
-<div class="preview">
-	<%#= render partial:"waterfall.html.erb",size:"600x600" %>
-</div>
-<div class="preview">
 
 <div class="waterfall">
 	<div class="st">
@@ -37,6 +31,4 @@
 		<div class="time">12月02日20:04</time>
 	</div>
 </div>
-</body>
 
-</div>-->

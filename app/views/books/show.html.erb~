@@ -1,0 +1,12 @@
+<h1>微博书PDF预览</h1>
+<object data=<%= "/wbooks/#{session[:uid]}.pdf#toolbar=1&statusbar=1" %>
+	width="100%" height="800"
+	type="application/pdf"></object>
+
+<%= form_tag :action => 'send_email' do %>
+  <p>请填写您的电子邮箱地址:
+    <%= text_field_tag 'email_addr', @addr %></p>
+  <center>
+    <%= submit_tag '将微博书发送至我的电子邮箱' %>
+  </center>
+<% end %>

@@ -106,4 +106,9 @@ input, textarea, select, .uneditable-input {
 	border-top: 1px solid #e8e8e8;
     }
 }
-
+.content {
+    display: block;
+}
+.timestamp {
+    color: $grayLight;
+}

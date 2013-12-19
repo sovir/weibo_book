@@ -14,25 +14,44 @@
     .poetry { color: gray; font-size: 5mm; font-style: italic; }
 }
 .contant{
+	//background-color:#f3f3f3;
 	
-	 p:first-letter 
-	{
-	color: #ff0033;
-	font-size:xx-large;
-	}
-	p{
-	margin-top:-3mm;
-	text-align: top;
-	background-color:#f9f9f9;
-	height:100%;
-	}
-	span :before{
-	}
 	.status{
-	margin-top:1mm;
-	border-top:0.5mm dotted #dddddd;
-	background-color:#fcfcfc;
-	filter:alpha(opacity=50); 
+		width:60mm;
+		padding-top:1mm;
+		margin-left:5mm;
+		margin-top:3mm;
+		border-top:0.5mm dotted #111;
+		background-color:#fcfcfc;
+		filter:alpha(opacity=50); 
+		 p.text:first-letter 
+		{
+			color: #ff0033;
+			font-size:x-large;
+		}
+		p{
+			font-size:3mm;
+			background-color:#f9f9f9;
+			height:100%;
+			width:60mm;
+			word-wrap:break-word;
+		}
+		.timestamp{
+			margin-top:2mm;
+			text-align:right;
+			background-color:#eeeeee;
+			font-size:2mm;
+			color:#343434;
+			width:60mm;
+		}
+	
+		.retweeted_status{
+			width:60mm;
+			//p.ret_user{background-color:#eeeeee;}
+			background-color:#eeeeee;
+			.S_line1_c{margin-left:3mm;margin-top:-3mm;color:#eeeeee;position:absolute;}
+			.ret_status{width:60mm;}
+		}
 	}
 	table {
 		width: 100%;
@@ -43,12 +62,6 @@
 		vertical-align: top;
 		page-break-inside: avoid ;
 	}
-	.timestamp{
-		text-align:right;
-		background-color:#eeeeee;
-		font-size:2mm;
-		color:#343434;
-		width:60mm;
-	}
+	
 }
 

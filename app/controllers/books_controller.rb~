@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 class BooksController < ApplicationController
     require 'json'
     include Hashie
@@ -20,102 +20,105 @@ class BooksController < ApplicationController
         if start_date.nil? || end_date.nil?
             render :new
         else
-             @statuses = fetch_statuses(start_date, end_date)
-             @data = Mash.new
-             @data.start_date = start_date
-             @data.end_date = end_date
-             @data.statuses = @statuses
-             File.open("statuses/#{session[:uid]}.json", "w") do |f|
-               f.write(@data.to_json)
-             end
-             render :select
-#            File.open("statuses/#{session[:uid]}.json", "r") do |f|
-#                @statuses = Mash.new(JSON.load(f)).statuses
-#            end
+            @statuses = fetch_statuses(start_date, end_date)
+            @data = Mash.new
+            @data.start_date = start_date
+            @data.end_date = end_date
+            @data.statuses = @statuses
+            File.open("statuses/#{session[:uid]}.json", "w") do |f|
+                f.write(@data.to_json)
+            end
+            render :select
+            #            File.open("statuses/#{session[:uid]}.json", "r") do |f|
+            #                @statuses = Mash.new(JSON.load(f)).statuses
+            #            end
         end
     end
 
-def create
-    File.open("statuses/#{session[:uid]}.json", "r") do |f|
-        @data= Mash.new(JSON.load(f))
+    def create
+        File.open("statuses/#{session[:uid]}.json", "r") do |f|
+            @data= Mash.new(JSON.load(f))
+        end
+        @tpl=params[:tpl]
+        if @tpl.nil?
+            @tpl="waterfall";
+        end
+        fetched_statuses = @data.statuses
+        @statuses = []
+        fetched_statuses.each do |status|
+            @statuses << status if params[status.id.to_s] == '1'
+        end
+        @statuses = @statuses.reverse
+        pdf = WickedPdf.new
+        pdf = render_to_string(:pdf => "book.pdf",
+                               :template => "books/#{@tpl}.pdf.erb",
+        :page_size => "A5",
+            :disposition => "attachment")
+        File.open("wbooks/#{session[:uid]}.pdf", "wb") do |f|
+            f << pdf
+        end
+        redirect_to action: :show
     end
-    @tpl=params[:tpl]
-    if @tpl.nil?
-	@tpl="waterfall";
-    end
-    fetched_statuses = @data.statuses
-    @statuses = []
-    fetched_statuses.each do |status|
-        @statuses << status if params[status.id.to_s] == '1'
+    def show
     end
 
-
-    @statuses = @statuses.reverse
-    pdf = WickedPdf.new
-    pdf = render_to_string(:pdf => "book.pdf",
-                           :template => "books/#{@tpl}.pdf.erb",
-                           :page_size => "A5",
-			   :disposition => "attachment")
-    File.open("wbooks/#{session[:uid]}.pdf", "wb") do |f|
-        f << pdf
+    def send_email
+        @addr = params[:email_addr]
+        # XXX validate is not perfect !
+        flash_msg(:error, "Invalied addr : #{@addr}") if invalid_email_addr?(@addr.to_s)
+        if invalid_email_addr?(@addr.to_s) 
+            render :show 
+        else 
+            CommentMailer.sendmail(@addr.to_s).deliver
+        end
     end
-    redirect_to action: :show
-end
-def show
-end
 
-def send_email
-    @addr = params[:email_addr]
-    # XXX validate is not perfect !
-    flash_msg(:error, "Invalied addr : #{@addr}") if invalid_email_addr?(@addr.to_s)
-    if invalid_email_addr?(@addr.to_s) 
-        render :show 
-    else 
-        CommentMailer.sendmail(@addr.to_s).deliver
+    def down_pdf
+        # XXX 这里的实现只支持一个用户一个pdf文件
+        send_file "wbooks/#{session[:uid]}.pdf", :type=>"application/pdf"
     end
-end
 
-
-def show
-end
-
-private
-def new_date(date)
-    begin
-        Date.parse(date)
-    rescue ArgumentError
-        nil
+    def show
     end
-end
 
-def fetch_statuses(start_date, end_date)
-    client = WeiboOAuth2::Client.new
-    client.get_token_from_hash({access_token: session[:access_token],
-                               expires_at: session[:expires_at]})
-    fetched_statuses = []
-    page = 0
-    count = 20
-    fetch_end = false
-    begin
-        page = page + 1
-        data = client.statuses.user_timeline("uid" => session[:uid],
-                                             "page" => page,
-                                             "count" => count,
-                                             "trim_user" => 1)
-        current_statuses = data.statuses
-        current_statuses.each do |status|
-            created_at = Date.parse(status.created_at)
-            if created_at <= end_date
-                if created_at >= start_date
-                    fetched_statuses << status
-                else
-                    fetch_end = true
-                    break
+    private
+    def new_date(date)
+        begin
+            Date.parse(date)
+        rescue ArgumentError
+            nil
+        end
+    end
+
+    def fetch_statuses(start_date, end_date)
+        client = WeiboOAuth2::Client.new
+        client.get_token_from_hash({access_token: session[:access_token],
+                                   expires_at: session[:expires_at]})
+        fetched_statuses = []
+        page = 0
+        count = 20
+        fetch_end = false
+	select_end = false
+        begin
+            page = page + 1
+            data = client.statuses.user_timeline("uid" => session[:uid],
+                                                 "page" => page,
+                                                 "count" => count,
+                                                 "trim_user" => 1)
+            current_statuses = data.statuses
+            current_statuses.each do |status|
+                created_at = Date.parse(status.created_at)
+                if created_at <= end_date
+                    if created_at >= start_date
+                        fetched_statuses << status
+                    else
+                        fetch_end = true
+                        break
+                    end
                 end
             end
-        end
-    end while current_statuses.length == count && (! select_end)
+        end while current_statuses.length == count && (! select_end)
 
-    return fetched_statuses
-end
+        return fetched_statuses
+    end
 end

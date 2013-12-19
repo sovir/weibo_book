@@ -1,5 +1,5 @@
 <!--<html><body>-->
-<div>
+<div style="width:100%;position:absolute;margin-top:-40px;">
   <footer class="footer">
     <small>
       <%= link_to "微博书", root_path %>	by HIT-wave
