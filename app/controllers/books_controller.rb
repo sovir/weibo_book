@@ -78,6 +78,38 @@ class BooksController < ApplicationController
         send_file "wbooks/#{session[:uid]}.pdf", :type=>"application/pdf"
     end
 
+    def share_book
+        client = WeiboOAuth2::Client.new
+        client.get_token_from_hash({access_token: session[:access_token], expires_at: session[:expires_at]})
+        #client.statuses.update("大神交待我一个任务，这次一定要好好表现！\n");
+        #client.statuses.upload("tux，好可爱的卡通企鹅图像呢！<盗图>", File.open('tux.png'))
+        
+        # get the 1st page of contant 
+        require 'RMagick'
+        # http://www.imagemagick.org/RMagick/doc/ilist.html#from_blob
+        first_page_no = 2
+        pdf_file = File.open("wbooks/#{session[:uid]}.pdf")
+        blob = pdf_file.read
+        ilist = Magick::ImageList.new
+        ilist.from_blob(blob)
+        ilist[first_page_no].write("wbooks/#{session[:uid]}.png")
+
+        client.statuses.upload("#开源免费的微博书#我用这个网站制作了一本微博书哦，这是内容的第一页",File.open("wbooks/#{session[:uid]}.png"))
+        render :show
+    end
+
+    def split_pdf
+        require 'RMagick'
+        # http://www.imagemagick.org/RMagick/doc/ilist.html#from_blob
+        first_page_no = 2
+        pdf_file = File.open("wbooks/#{session[:uid]}.pdf")
+        blob = pdf_file.read
+        ilist = Magick::ImageList.new
+        ilist.from_blob(blob)
+        ilist[first_page_no].write("wbooks/#{session[:uid]}.png")
+        render :show
+    end
+
     def show
     end
 
@@ -98,7 +130,7 @@ class BooksController < ApplicationController
         page = 0
         count = 20
         fetch_end = false
-        #select_end = false;
+        select_end = false;
         begin
             page = page + 1
             data = client.statuses.user_timeline("uid" => session[:uid],

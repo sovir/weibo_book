@@ -14,7 +14,6 @@
 }
 
 .contant{
-
     .one_status{
         border:1px;
         clear:both;
@@ -35,6 +34,7 @@
     }
 
     .status_text{
+        text-indent:2em;    
         font-family: KaiTi;
         margin-top:1mm;
         border-top:0.5mm dotted #dddddd;
@@ -42,10 +42,9 @@
         filter:alpha(opacity=50); 
     }
 
+
     table,td{
         width: 100%;
         page-break-inside: avoid;
     }
-
-
 }

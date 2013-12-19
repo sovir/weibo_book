@@ -7,12 +7,19 @@
   <p>请填写您的电子邮箱地址:
     <%= text_field_tag 'email_addr', @addr %></p>
   <center>
-    <%= submit_tag '将微博书发送至我的电子邮箱' %>
+    <%= submit_tag '发送到邮箱' %>
   </center>
   <%end%>
 
 <%= form_tag :action => 'down_pdf' do %>
   <center>
-    <%= submit_tag '直接下载微博书' %>
+    <%= submit_tag '一键下载' %>
   </center>
   <%end%>
+
+<%= form_tag :action => 'share_book' do %>
+  <center>
+    <%= submit_tag '分享至新浪微博' %>
+  </center>
+  <%end%>
+
