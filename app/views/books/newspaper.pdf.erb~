@@ -17,17 +17,8 @@
       </div>
     </div>
     <div class="book_title">
-      <%= "#{session[:screen_name]}的微博书" %><pre>
+      <%= "#{session[:screen_name]}的微博书" %>
 	< *** Русский язык vАа=а（a）
-Бб=бэ（be）
-Вв=вэ（ve）
-Гг=гэ（ge）
-Дд=дэ（de）
-Ее=йэ（ie）
-Ёё=йо（io）
-Жж=жэ（re）
-Зз=зэ（s（这里的s是r的不翘舌音）e）
-Ии=и（i） ***></pre>
     </div>
     <div class="poetry">
       I leave no trace of wings in the air,<br />
