@@ -2,21 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .content {
-    display: block;
+    /* text-align:center; */
 }
 .timestamp {
     color: gray;
 }
-.select_template{
-	background-color:green;
-	//float:left;
-	.template{
-	border:1px solid gray;
-	width:300px;
-	height:200px;
-	float:left;
-	background-color:red;
-	}
+.template{
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    .name { font-size: 20px; margin-top: 20px; }
+}
+.time{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top:30px;
+    select {width:120px;}
+}
+.submit {
+    text-align: center;
+    input { 
+	background: green;
+	color: white;
+	font-size: 30px;
+	border-radius: 5px;
+    }
+}
+.button {
+    height: 40px;
+    display: inline-block;
+    border-radius: 5px;
+    background: green;
+    padding-top : 5px;
+    text-align:center;
+    line-height:250%;
+    a {color: white; font-size: 30px;margin:5px 5px 5px 5px; }
+    a:hover{ text-decoration: none; color: white; }
 }
 .show_tag
 {   height:200px;

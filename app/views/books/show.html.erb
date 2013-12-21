@@ -1,23 +1,21 @@
-<h1>微博书PDF预览</h1>
+<center><h1>微博书PDF预览</h1></center>
 <object data=<%= "/wbooks/#{session[:uid]}.pdf#toolbar=1&statusbar=1" %>
 	width="100%" height="800"
 	type="application/pdf"></object>
-<div class="show_tag">
-    <div class='tag_addr'>
-    <%= form_tag( :action => 'send_email') do %>
-      <p>请填写您的电子邮箱地址:
-        <%= text_field_tag 'email_addr', @addr %></p>
-        <%= submit_tag '发送到邮箱' %>
-        <%end%>
-        </div> <div class='tag_down'>
+  
+<%= form_tag :action => 'send_email' do %>
+  <center style="font-size:20px; font-weight: bold;">
+    邮箱地址: <%= text_field_tag 'email_addr', @addr, style: "width:200px"%>
+  <span class="submit"><%= submit_tag '发送' %></span>
+  </center>
+<% end %>
 
-      <%= form_tag(:action => 'down_pdf') do %>
-          <%= submit_tag '一键下载' %>
-       <%end%>
-       </div> <div class='tag_share'>
-
-      <%= form_tag(:action => 'share_book') do %>
-         <%= submit_tag '分享至新浪微博' %>
-      <%end%>
-      </div>
-  </div>
+<center>
+<div class="button">
+  <%= link_to "一键下载", books_down_pdf_path, method: :post %><br />
+</div>
+<div class="button">
+  <%= link_to "分享至新浪微博", books_share_book_path, method: :post %>
+</div>
+<%# File.join(Rails.root, "wbooks/#{session[:uid]}.pdf")%>
+</center>

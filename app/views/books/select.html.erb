@@ -7,8 +7,6 @@
 	<% status.pic_urls.each do |pic_url| %>
 	  <%= image_tag pic_url.thumbnail_pic, alt: "pic" %>
 	<% end %><br />
-	<%# unless status.retweeted_status.nil? %>
-	  <% #status.retweeted_status %>
 	<%# timestamp %>
 	<span class="timestamp">
 	  <%= DateTime.parse(status.created_at).strftime(
@@ -18,22 +16,9 @@
     <% end %>
     <button type="button" id="check_all">全选</button>
   </div>
-  <div class="select_template">
-  <p>select template:</p>
-  	<div class="tempate">
-	  <%= radio_button_tag(:tpl, "timeline",true) %>
-	  <%= label_tag(:timeline, "timeline") %>
-	</div>
-	<div class="tempate">
-	  <%= radio_button_tag(:tpl, "waterfall") %>
-	  <%= label_tag(:waterfall, "waterfall") %>
-	</div>
-	<div class="tempate">
-	  <%= radio_button_tag(:tpl, "newspaper") %>
-	  <%= label_tag(:newspaper, "newspaper") %>
-	</div>
-   </div>
-	  <%= submit_tag "Create Book"%>
+  <div class="submit" style="margin-top:20px">
+    <%= submit_tag "创建电子书" %>
+  </div>
 <% end %>
 
 <script type='text/javascript'>

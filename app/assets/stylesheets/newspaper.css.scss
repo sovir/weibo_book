@@ -1,47 +1,79 @@
 .page-break { display:block; clear:both; page-break-after:always; }
+.blank { width: 100%; height: 80mm; }
 .title_page { 
     .date {
-        font-size: 10mm;
-        margin-top: 60mm;
-        .year { }
-        .month { color: green; font-size: 15mm }
+	font-size: 8mm;
+	margin-top: 60mm;
+	.year { }
+	.month { color: red; font-size: 15mm }
     }
     .book_title {
-        position: relative;
-        font-family: bold;
+	position: relative;
+	font-weight: bold;
+	font-size: 10mm;
     }
-    .poetry { color: gray; font-size: 5mm; font-style: italic; }
+    .poetry { 
+	color: gray;
+	font-size: 5mm;
+	font-style: italic;
+	text-indent: 10mm;
+    }
 }
 
-.contant{
+.inner-page {
+    padding-right: 10px;
+    padding-left: 80mm;
+    padding-top: 80mm;
+    text-align: right;
+    .avatar {
+	border-radius: 50px;
+	display: inline-block;
+    }
+    .screen_name { 
+	padding: 5px 0 0 0;
+	border-bottom: 2px dashed #eaeaea;
+    }
+    .period { 
+	padding: 5px 0 0 0;
+	border-bottom: 2px dashed #eaeaea;
+    }
+}
+
+.chapter-title-page {
+    width: 100%;
+    height: 183mm;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    text-align: right;
+    .chapter-year { font-size: 30px; padding-right: 20px; }    
+    .chapter-month { font-size: 50px; padding-right: 20px; }
+    .chapter-poetry { font-size: 15px; padding-right: 20px; }
+}
+
+.content{
     .one_status{
-        border:1px;
+	padding: 30px 0 5px 0;
         clear:both;
         overflow:hidden;
     }
 
-    .timestamp_left{
-        text-align:left;
+    .timestamp {
         background-color:#eeeeee;
         font-size:5mm;
-        color:#ff6100;
+	overflow: hidden;
+	.day {
+	    font-size: 7mm;
+	    color:white;
+	}
+	.time {	padding: 2mm 5px 0 5px; }
     }
-    .timestamp_right{
-        text-align:right;
-        background-color:#eeeeee;
-        font-size:5mm;
-        color:#ff6100;
+    .status-content {
+	background: #eeeeee;
+	overflow: hidden;
+	margin-top: 5px;
+	.text{ text-indent:2em; padding: 5px 5px 5px 5px; }
     }
-
-    .status_text{
-        text-indent:2em;    
-        font-family: KaiTi;
-        margin-top:1mm;
-        border-top:0.5mm dotted #dddddd;
-        background-color:#fcfcfc;
-        filter:alpha(opacity=50); 
-    }
-
 
     table,td{
         width: 100%;

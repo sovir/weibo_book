@@ -25,12 +25,17 @@ module ApplicationHelper
               :Oct => "江南十月天雨霜，人间草木不敢芳",
               :Nov => "十一月中长至夜，三千里外远行人",
               :Dec => "日晏霜浓十二月，林疏石瘦第三溪"}
+    theme = {:spring => "#32cd32", # limegreen
+             :summer => "#1e90ff", # dodgerblue
+             :fall => "#ffa500", # orange
+             :winter => "#ffb6c1"} # lightpink
     chapter = Mash.new
     first_status = all_statuses.first
     first_day = Date.parse(first_status.created_at)
     chapter.month = first_day.month
     chapter.poetry = poetry[first_day.strftime("%b").to_sym]
     chapter.season = season(first_day)
+    chapter.theme = theme[chapter.season]
     chapter.first_day = first_day
     chapter.statuses = []
     while Date.parse(all_statuses.first.created_at).month == first_day.month do

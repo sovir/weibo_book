@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  include Hashie
   WeiboOAuth2::Config.api_key = '4286583364'
   WeiboOAuth2::Config.api_secret = 'b514220cea98656a0b74011b13334143'
   WeiboOAuth2::Config.redirect_uri = 'http://127.0.0.1:3000/callback'
@@ -21,6 +22,11 @@ class SessionsController < ApplicationController
     user = client.users.show_by_uid(session[:uid].to_s)
     session[:screen_name] = user.screen_name
     session[:created_at] = Date.parse("#{user.created_at}")
+    data = Mash.new
+    data.user = user
+    File.open("statuses/#{session[:uid]}.json", "w") do |f| 
+      f.write(data.to_json)
+    end
     redirect_to new_book_url
   end
 

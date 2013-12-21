@@ -1,7 +1,8 @@
 .page-break { display:block; clear:both; page-break-after:always; }
+.blank { width: 100%; height: 80mm; }
 .title_page { 
     .date {
-	font-size: 10mm;
+	font-size: 8mm;
 	margin-top: 60mm;
 	.year { }
 	.month { color: red; font-size: 15mm }
@@ -11,57 +12,94 @@
 	font-weight: bold;
 	font-size: 10mm;
     }
-    .poetry { color: gray; font-size: 5mm; font-style: italic; }
+    .poetry { 
+	color: gray;
+	font-size: 5mm;
+	font-style: italic;
+	text-indent: 10mm;
+    }
 }
-.contant{
-	//background-color:#f3f3f3;
-	
-	.status{
-		width:60mm;
-		padding-top:1mm;
-		margin-left:5mm;
-		margin-top:3mm;
-		border-top:0.5mm dotted #111;
-		background-color:#fcfcfc;
-		filter:alpha(opacity=50); 
-		 p.text:first-letter 
-		{
-			color: #ff0033;
-			font-size:x-large;
-		}
-		p{
-			font-size:3mm;
-			background-color:#f9f9f9;
-			height:100%;
-			width:60mm;
-			word-wrap:break-word;
-		}
-		.timestamp{
-			margin-top:2mm;
-			text-align:right;
-			background-color:#eeeeee;
-			font-size:2mm;
-			color:#343434;
-			width:60mm;
-		}
-	
-		.retweeted_status{
-			width:60mm;
-			//p.ret_user{background-color:#eeeeee;}
-			background-color:#eeeeee;
-			.S_line1_c{margin-left:3mm;margin-top:-3mm;color:#eeeeee;position:absolute;}
-			.ret_status{width:60mm;}
-		}
+
+.inner-page {
+    padding-right: 10px;
+    padding-left: 80mm;
+    padding-top: 80mm;
+    text-align: right;
+    .avatar {
+	border-radius: 50px;
+	display: inline-block;
+    }
+    .screen_name { 
+	padding: 5px 0 0 0;
+	border-bottom: 2px dashed #eaeaea;
+    }
+    .period { 
+	padding: 5px 0 0 0;
+	border-bottom: 2px dashed #eaeaea;
+    }
+}
+
+.chapter-title-page {
+    width: 100%;
+    height: 183mm;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    text-align: right;
+    .chapter-year { font-size: 30px; padding-right: 20px; }    
+    .chapter-month { font-size: 50px; padding-right: 20px; }
+    .chapter-poetry { font-size: 15px; padding-right: 20px; }
+}
+
+.content{
+    .status{
+	width:60mm;
+	padding-top:1mm;
+	margin-left:5mm;
+	margin-top:3mm;
+	border-top:0.5mm dotted #111;
+	/* background:#eeeeee; */
+	filter:alpha(opacity=50); 
+	.first-letter {
+	    color: #ff0033;
+	    font-size: 8mm;
 	}
-	table {
-		width: 100%;
-		page-break-inside: avoid;
+	.text {
+	    margin-bottom: 3px;
+	    font-size:4mm;
+	    background-color:#f9f9f9;
+	    height:100%;
+	    width:60mm;
+	    word-wrap:break-word;
 	}
-	td{
-		width: 50%;
-		vertical-align: top;
-		page-break-inside: avoid ;
+	.timestamp{
+	    margin-top:2mm;
+	    text-align:right;
+	    background-color:#eeeeee;
+	    font-size:3mm;
+	    color:#343434;
+	    width:60mm;
+	    clear: both;
+	    .at { font-size: 4mm; }
 	}
 	
+	.retweeted_status{
+	    width:60mm;
+	    //p.ret_user{background-color:#eeeeee;}
+	    background-color:#eeeeee;
+	    .S_line1_c{margin-left:3mm;margin-top:-3mm;color:#eeeeee;position:absolute;}
+	    .ret_status{width:60mm;}
+	}
+    }
+    table {
+	width: 100%;
+	page-break-inside: avoid;
+    }
+    td{
+	width: 50%;
+	vertical-align: top;
+	page-break-inside: avoid ;
+    }
+    
 }
 

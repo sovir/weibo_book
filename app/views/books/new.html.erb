@@ -1,14 +1,34 @@
 <%= form_tag({action: :select}) do %>
+  <table class="template">
+    <td>
+      <div><%= image_tag "sucai/timeline.jpg", width: "200" %></div>
+      <div class="name">
+	<%= radio_button_tag(:template, "timeline", true) %>时间轴风格
+      </div></td>
+    <td>
+      <div><%= image_tag "sucai/newspaper.jpg", width: "200" %></div>
+      <div class="name">
+	<%= radio_button_tag(:template, "newspaper") %>杂志风格
+      </div></td>
+    <td>
+      <div><%= image_tag "sucai/waterfall.jpg", width: "200" %></div>
+      <div class="name">
+	<%= radio_button_tag(:template, "waterfall") %>格子风格
+      </div></td>
+  </table>
   <% start_date = session[:created_at] %>
   <% end_date = Date.today %>
-  start date:<%= select_date start_date, use_month_numbers: true,
-  start_year: start_date.year, end_year: end_date.year, prefix: :start_date %>
+  <div class="time">
+    起始日期:<%= select_date start_date, use_month_numbers: true,
+    start_year: start_date.year, end_year: end_date.year, prefix: :start_date %>
+    终止日期:<%= select_date end_date, use_month_numbers: true,
+    start_year: start_date.year, end_year: end_date.year, prefix: :end_date %>
   <br />
-  end date:<%= select_date end_date, use_month_numbers: true,
-  start_year: start_date.year, end_year: end_date.year, prefix: :end_date %>
-  <br />
-  <%= submit_tag "submit" %>
+  </div>
+  
+  <div style="font-size:20px;font-weight:bold;text-align:center">
+    书名: <%= text_field_tag(:book_name, "#{session[:screen_name]}的微博书",
+    style: "width:500px;") %>
+  </div>
+  <div class="submit"><%= submit_tag "确认"%></div>
 <% end %>
-
-<%= session[:screen_name] %>
-<%= session[:created_at] %>
