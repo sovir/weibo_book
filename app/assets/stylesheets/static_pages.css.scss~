@@ -105,14 +105,14 @@
 		     z-index:4;
 		     margin-left:80px;
 		     margin-top:60px;
-		     border-color:green;img{width:230px;}
+		     border-color:green;
 		    }
 	.img_3:hover{opacity:1.0;
 		     filter:alpha(opacity=100);
 		     z-index:4;
 		     margin-left:20px;
 		     margin-top:130px;
-		     border-color:green;img{width:230px;}
+		     border-color:green;
 		    }
     }
 }

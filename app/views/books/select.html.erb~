@@ -1,7 +1,7 @@
 
 <%= form_tag({ action: :create }) do %>
   <div class="statuses">
-   <div class="select" style="max-height:400px;overflow:auto;border:2px solid #fcfcfc">
+   <div class="select" style="max-height:400px;overflow:auto;border:2px solid gray">
     <% @statuses.each do |status| %>
       <li><div class="contant"><%= check_box_tag(status.id) %>
 	<%= status.text %></div>
