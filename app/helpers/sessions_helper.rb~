@@ -4,8 +4,8 @@ module SessionsHelper
   end
   
   def sign_in?
-    client = WeiboOAuth2::Client.new('4286583364',
-                                     'b514220cea98656a0b74011b13334143')
+    client = WeiboOAuth2::Client.new('2065192073',
+                                     '3a2eef3d956f160ff15dc17739c11009')
     token = client.get_token_from_hash(access_token: session[:access_token], expires_at: session[:expires_at]) if session[:access_token]
     token && token.validated?
   end
