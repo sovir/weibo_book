@@ -1,0 +1,45 @@
+<%# chapter_title_page %>
+<div class="chapter-title-page" style="background-image:url(<%= Rails.root.join("public/image/#{chapter.month}.jpg") %>);">
+  <div class="blank"></div>
+  <div class="chapter-year"><%= chapter.first_day.strftime("%Y") %></div>
+  <div class="chapter-month"><%= chapter.first_day.strftime("%m") %></div>
+  <div class="chapter-poetry"><%= chapter.poetry %></div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="content">
+  <% pos = ["left", "right"] %>
+  <% cur = 0 %>
+  <% chapter.statuses.each do |status| %>
+    <table>
+      <td>
+	<% unless status.pic_urls.empty? then %>
+          <div class="one_status">
+	    <div class="timestamp">
+	      <% datetime = DateTime.parse(status.created_at) %>
+	      <div class="day" 
+		   style="background:<%= chapter.theme %>;float:<%=pos[cur]%>;">
+		<%= datetime.strftime("%d") %>
+	      </div>
+	      <div class="time"
+		    style="color:<%= chapter.theme %>;float:<%= pos[cur] %>;">
+		<%= datetime.strftime("%H:%m") %>
+	      </div>
+	    </div>
+	    <div class="status-content">
+              <%# pictures %>
+	      <% status.pic_urls.each do |pic_url| %>
+		<%= image_tag pic_url.thumbnail_pic,
+		style:"float:#{pos[cur]};margin: 5px 5px 5px 5px;"%>
+	      <% end %>
+	      <% cur = (cur + 1) % 2 %>
+              <div class="text"><%= status.text %></div>
+	    </div>
+	<% end %>
+      </td>
+    </table>
+  <% end %>
+</div>
+</body>
+

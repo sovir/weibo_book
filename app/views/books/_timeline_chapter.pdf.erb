@@ -1,0 +1,37 @@
+<%# chapter_title_page %>
+<div class="chapter-title-page" style="background-image:url(<%= Rails.root.join("public/image/#{chapter.month}.jpg") %>);">
+  <div class="blank"></div>
+  <div class="chapter-year"><%= chapter.first_day.strftime("%Y") %></div>
+  <div class="chapter-month"><%= chapter.first_day.strftime("%m") %></div>
+  <div class="chapter-poetry"><%= chapter.poetry %></div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="chapter-content" style="border-left-color:<%= chapter.theme %>;">
+  <% chapter.statuses.each do |status| %>
+    <div class="item">
+      <div class="circle" style="background:<%= chapter.theme %>;">
+	<% datetime = DateTime.parse(status.created_at) %>
+	<div class="day"><%= datetime.strftime("%d") %></div>
+	<div class="time"><%= datetime.strftime("%H:%M") %></div>
+      </div>
+
+      <div class="item-content">
+	<table>
+	  <td><div class="item-text"><%= status.text %></div></td>
+	  <td><%# pictures %>
+	    <div class="item-image">
+	      <% status.pic_urls.each do |pic_url| %>
+		<%= image_tag pic_url.thumbnail_pic %>
+	      <% end %>
+	    </div>
+	  </td>
+	</table>
+      </div>
+    </div>
+  <% end %>
+  <div class="item"></div>
+</div>
+
+<div class="page-break"></div>

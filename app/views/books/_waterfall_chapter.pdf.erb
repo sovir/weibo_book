@@ -1,0 +1,57 @@
+<div class="page-break"></div>
+<%# chapter_title_page %>
+<div class="chapter-title-page" style="background-image:url(<%= Rails.root.join("public/image/#{chapter.month}.jpg") %>);">
+  <div class="blank"></div>
+  <div class="chapter-year"><%= chapter.first_day.strftime("%Y") %></div>
+  <div class="chapter-month"><%= chapter.first_day.strftime("%m") %></div>
+  <div class="chapter-poetry"><%= chapter.poetry %></div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="content">
+  <% chapter.statuses.each_slice(2) do |slice| %>
+    <table>
+      <% slice.each do |status|  %>
+	<td><div class="status">
+	  <div class="text">
+	    <span class="first-letter" style="color:<%= chapter.theme%>;">
+	      <%= status.text.slice!(0) %></span>
+	    <%= status.text %>
+	  </div>
+	  <%# pictures %>
+	  <% if status.pic_urls.size == 1 %>
+	    <%= image_tag status.bmiddle_pic, style: "width:100%;" %>
+	  <% else %>
+	    <% status.pic_urls.each do |pic_url| %>
+	      <%= image_tag pic_url.thumbnail_pic, 
+	      style:"width:48%;float:left;border:2px solid white"%>
+	    <% end %>
+	  <% end %>	    
+	  <%# retweeted_status %>
+	  <% unless status.retweeted_status.nil? %>
+	    <div class="retweeted_status">
+	      <em class="S_line1_c">◆</em>
+	      <table><td>
+		<div class="ret_status">
+		  <p class="ret_user"><%= status.retweeted_status.user %></p>
+		  <p class="re_text"><%= status.retweeted_status.text %></p>
+		  <%  status.retweeted_status.pic_urls.each do |pic_url| %>
+		    <%= image_tag pic_url.thumbnail_pic, alt: "pic" ,style:"max-width:58mm;align:left;float:left"%>
+		  <% end %>
+		</div>
+	      </td></table>
+	    </div>
+	  <% end %>
+	  <%# timestamp %>
+	  <div class="timestamp">
+	    <span class="at" style="color:<%= chapter.theme %>">@</span>
+	    <%= DateTime.parse(status.created_at).strftime(
+	    "%Y年%m月%d日 %H:%M") %>
+	  </div>
+	</div></td>
+      <% end %>
+    </table>
+  <% end %>
+</div>
+
