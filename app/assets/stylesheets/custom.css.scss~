@@ -13,8 +13,8 @@ section { overflow: auto; }
     h1 { margin-bottom: 10px; }
 }
 @font-face {
-	font-family:'font-china';
-	src:url( '/public/inc/fonts/PTS55F-webfont.ttf') format('truetype');
+	font-family: font-china;
+	src:url( '/public/ttf/PTS55F.ttf') format('truetype');
 	font-weight: normal;
       	font-style: normal;
 }
