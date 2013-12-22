@@ -14,7 +14,7 @@ section { overflow: auto; }
 }
 @font-face {
 	font-family: font-china;
-	src:url( '/public/ttf/PTS55F.ttf') format('truetype');
+	src:font_url( '/public/ttf/PTS55F.ttf') format('truetype');
 	font-weight: normal;
       	font-style: normal;
 }

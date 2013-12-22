@@ -11,6 +11,7 @@
 	position: relative;
 	font-weight: bold;
 	font-size: 10mm;
+	font-family:serif, Verdana, Arial, '宋体',SimSun,'黑体',SimHei,'微软雅黑',Microsoft YaHei,'楷体',KaiTi,'新细明体',PMingLiU,'仿宋_GB2312',FangSong_GB2312,'楷体_GB2312',KaiTi_GB2312,font-china;
     }
     .poetry { 
 	color: gray;
