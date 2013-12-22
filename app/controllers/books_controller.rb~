@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   include Hashie
   WeiboOAuth2::Config.api_key = '2065192073'
   WeiboOAuth2::Config.api_secret = '3a2eef3d956f160ff15dc17739c11009'
-  WeiboOAuth2::Config.redirect_uri = 'http://127.0.0.1:3000/callback'
+  WeiboOAuth2::Config.redirect_uri = 'http://weibo-books.herokuapp.com/callback'
   def new
   end
 
@@ -84,7 +84,7 @@ class BooksController < ApplicationController
     ilist.from_blob(blob)
     ilist[first_page_no].write("public/wbooks/#{session[:uid]}.png")
 
-    client.statuses.upload("#开源免费的微博书#我用这个网站制作了一本微博书哦，这是内容的第一页",File.open("public/wbooks/#{session[:uid]}.png"))
+    client.statuses.upload("#开源免费的微博书#http://weibo-books.herokuapp.com/我用这个网站制作了一本微博书哦，这是内容的第一页",File.open("public/wbooks/#{session[:uid]}.png"))
     flash_msg(:success, "已经分享到您的新浪微博啦～快去看看吧～ o(∩∩)o...哈哈")
     render :show
   end
