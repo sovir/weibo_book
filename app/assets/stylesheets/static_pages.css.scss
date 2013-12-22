@@ -50,6 +50,7 @@
 		    padding:10px ;
 		    padding-bottom:0px;
 		    -webkit-animation: login_movie 5s 1;
+		    animation: login_movie 5s 1;
 		    -webkit-border-radius: 7px;
 		    font-size:25px;
 		}
@@ -71,6 +72,7 @@
 	    filter:alpha(opacity=80);
 	    border:1px solid gray;
 	    -webkit-transition:margin 0.5s;
+	    transition:margin 0.5s;
 	}
 	.img_2{
 	    position:absolute;
@@ -82,6 +84,7 @@
 	    border-color:white;
 	    border:1px solid gray;
 	    -webkit-transition:margin 0.5s;
+	    transition:margin 0.5s;
 	}
 	.img_3{
 	    position:absolute;
@@ -92,6 +95,7 @@
 	    filter:alpha(opacity=80);
 	    border:1px solid gray;
 	    -webkit-transition:margin 0.5s;
+	    transition:margin 0.5s;
 	}
 	.img_1:hover{opacity:1.0;
 		     filter:alpha(opacity=100);
@@ -118,15 +122,28 @@
 }
 @keyframes login_movie{
     0%{-webkit-transform: rotate(0deg);margin-left:0px;}
-    25%{-webkit-transform: rotate( 23deg);margin-left:0px;}
+    25%{-webkit-transform: rotate( 20deg);margin-left:0px;}
     50%{-webkit-transform: rotate(0deg);margin-left:400px;}
-    55%{-webkit-transform: rotate(170deg);margin-left:400px;}
+    55%{-webkit-transform: rotate(0deg);margin-left:400px;}
     70%{-webkit-transform: rotate(0deg);margin-left:400px;background:#1ec7e6;}
     100%{-webkit-transform: rotate(-360deg);margin-left:0px;}
 
+    0%{transform: rotate(0deg);margin-left:0px;}
+    25%{transform: rotate( 20deg);margin-left:0px;}
+    50%{transform: rotate(0deg);margin-left:400px;}
+    55%{transform: rotate(0deg);margin-left:400px;}
+    70%{transform: rotate(0deg);margin-left:400px;background:#1ec7e6;}
+    100%{transform: rotate(-360deg);margin-left:0px;}
 }
 @-webkit-keyframes login_movie
-{position:relative;
+{
+    0%{transform: rotate(0deg);margin-left:0px;}
+    25%{transform: rotate( 20deg);margin-left:0px;}
+    50%{transform: rotate(0deg);margin-left:400px;}
+    55%{transform: rotate(0deg);margin-left:400px;}
+    70%{transform: rotate(0deg);margin-left:400px;background:#1ec7e6;}
+    100%{transform: rotate(-360deg);margin-left:0px;}
+
     0%{-webkit-transform: rotate(0deg);margin-left:0px;}
     25%{-webkit-transform: rotate( 20deg);margin-left:0px;}
     50%{-webkit-transform: rotate(0deg);margin-left:400px;}
