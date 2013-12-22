@@ -33,7 +33,7 @@ gem 'json', '~>1.7.3'
 gem 'weibo_2'
 gem 'wkhtmltopdf-heroku'
 gem 'wicked_pdf'
-#gem 'rmagick'
+gem 'rmagick'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
