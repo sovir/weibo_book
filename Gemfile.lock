@@ -134,7 +134,7 @@ GEM
       rest-client (~> 1.6.7)
     wicked_pdf (0.9.7)
       rails
-    wkhtmltopdf-heroku (1.0.0)
+    wkhtmltopdf-binary (0.9.9.1)
 
 PLATFORMS
   ruby
@@ -156,4 +156,4 @@ DEPENDENCIES
   uglifier (= 2.1.1)
   weibo_2
   wicked_pdf
-  wkhtmltopdf-heroku
+  wkhtmltopdf-binary

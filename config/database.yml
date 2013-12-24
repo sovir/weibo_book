@@ -19,8 +19,8 @@ test:
 production:
   adapter: mysql2
   usename: root
-  password: "6365878"
+  password: "120731"
   encoding: utf8
-  database: yaoguai
+  database: yaoguai_pro
   pool: 5
   timeout: 5000

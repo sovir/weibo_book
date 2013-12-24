@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
   include Hashie
-  WeiboOAuth2::Config.api_key = '2065192073'
-  WeiboOAuth2::Config.api_secret = '3a2eef3d956f160ff15dc17739c11009'
-  WeiboOAuth2::Config.redirect_uri = 'http://weibo-books.herokuapp.com/callback'
+  WeiboOAuth2::Config.api_key = '4286583364'
+  WeiboOAuth2::Config.api_secret = 'b514220cea98656a0b74011b13334143'
+  WeiboOAuth2::Config.redirect_uri = 'http://127.0.0.1:3000/callback'
   def new
     if sign_in?
       redirect_to new_book_url
