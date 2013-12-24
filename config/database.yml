@@ -1,7 +1,7 @@
 development:
   adapter: mysql2
   usename: root
-  password: "6365878"
+  password: ""
   encoding: utf8
   database: yaoguai 
   pool: 5
@@ -19,7 +19,7 @@ test:
 production:
   adapter: mysql2
   usename: root
-  password: "120731"
+  password: ""
   encoding: utf8
   database: yaoguai_pro
   pool: 5

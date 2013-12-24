@@ -30,8 +30,8 @@ ActionMailer::Base.smtp_settings = {
   :address              => "smtp.163.com",
   :port                 => 25,
   :domain               => "163.com",
-  :user_name            => "hitwavebook",
-  :password             => "hitwave",
+  :user_name            => "",
+  :password             => "",
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
